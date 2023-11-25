@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 let Music = require('../models/music');
 
-module.exports.DislayMusiclist = async (req,res,next)=>{ 
+module.exports.DisplayMusiclist = async (req,res,next)=>{ 
     try{
        const MusicList = await Music.find(); 
        res.render('music/list', {

@@ -5,7 +5,7 @@ let Music = require('../models/music');
 let musicController = require('../controllers/music');
 /* Get route for the Bio Books list */
 // Read Operation
-router.get('/', musicController.DislayMusiclist);
+router.get('/', musicController.DisplayMusiclist);
 /* Get route for Add Book page --> Create */
 router.get('/add', musicController.Addmusic); 
 /* Post route for Add Book page --> Create */
