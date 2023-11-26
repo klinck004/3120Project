@@ -38,25 +38,27 @@ module.exports.DisplayMusiclist = async (req,res,next)=>{
 };
 //process the new additions
 module.exports.Processmusic = async (req,res,next)=>{
-    try{
-        let newMusic = Music({
-            "title":req.body.title,
-            "studio": req.body.studio,
-            "year": req.body.year,
-            "length": req.body.length
-        });
-        music.create(newmusic).then(() =>{
-            res.redirect('/music')
+    let newMusic = Music({
+        "name":req.body.title,
+        "artist": req.body.artist,
+        "album": req.body.album,
+        "year": req.body.year,
+        "length": req.body.length
+    });
+    Music.create(newMusic)
+        .then(() => {
+            res.redirect('/music');
         })
-    }
-    catch(error){
-        console.error(err);
-        res.render('music/list',
-        {
-            error: 'Error on the server'
+        .catch((err) => {
+            console.log("LOG: Add POST error:");
+            console.log(err)
+            res.render('error', {
+                error: 'Add POST error:'
+            });
         });
-    }
 };
+
+
 //edit an existing entry
 module.exports.Editmusic = async (req,res,next)=>{
     try{
@@ -82,16 +84,17 @@ module.exports.ProcessEditmusic = (req,res,next)=>{
         const id = req.params.id;
         let updatedMusic = Music({
             "_id":id,
-            "title":req.body.title,
-            "studio": req.body.studio,
+            "name":req.body.title,
+            "artist": req.body.artist,
+            "album": req.body.album,
             "year": req.body.year,
             "length": req.body.length
         });
-        Music.findByIdAndUpdate(id,updatedmusic).then(()=>{
+        Music.findByIdAndUpdate(id, updatedMusic).then(()=>{
             res.redirect('/music')
         });
     }
-    catch(error){
+    catch(err){
         console.error(err);
         res.render('music/list',
         {
