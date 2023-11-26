@@ -2,13 +2,13 @@ let mongoose = require('mongoose');
 
 // create model for music
 let musicmodel = mongoose.Schema({
-
-    title: String,
+    name: String,
     artist: String,
+    album: String,
     year: Number,
-    length: Number
+    length: String
 },
-{
-    collection:"music"
-});
-module.exports = mongoose.model('Music',musicmodel);
+    {
+        collection:"songs"
+    });
+module.exports = mongoose.model('music', musicmodel);

@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
 let Music = require('../models/music');
+console.log("Music DB controller loaded!"); /* for dev peace of mind */
 
+// Read list
 module.exports.DisplayMusiclist = async (req,res,next)=>{ 
     try{
        const MusicList = await Music.find(); 

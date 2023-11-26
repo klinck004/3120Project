@@ -3,12 +3,23 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+let DB = require('./db'); // For MongoDB connection
 
-
+// Router variable declaration
 var indexRouter = require('../routes/index');
 var usersRouter = require('../routes/users');
+let musicRouter = require('../routes/music')
 
 var app = express();
+
+// Mongoose initialization and database connection
+
+let mongoose = require('mongoose');
+let mongoDB = mongoose.connection;
+
+mongoose.connect(DB.URI);
+mongoDB.on('error',console.error.bind(console,'Connection Error'));
+mongoDB.once('open',()=>{console.log("Mongo DB is connected")});
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
@@ -22,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/music', musicRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

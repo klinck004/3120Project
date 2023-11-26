@@ -1,8 +1,7 @@
 var express = require('express');
 var router = express.Router();
-//const { router } = require('../config/app');
-let Music = require('../models/music');
-let musicController = require('../controllers/music');
+
+let musicController = require('../controllers/music.js');
 /* Get route for the Bio Books list */
 // Read Operation
 router.get('/', musicController.DisplayMusiclist);
