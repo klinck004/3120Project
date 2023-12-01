@@ -2,17 +2,25 @@ var express = require('express');
 var router = express.Router();
 
 let musicController = require('../controllers/music.js');
-/* Get route for the Bio Books list */
+// User authentication check
+function requireAuth(req, res, next) {
+    if(!req.isAuthenticated())
+    {
+        return res.redirect('/login');
+    }
+    next();
+}
+
 // Read Operation
 router.get('/', musicController.DisplayMusiclist);
-/* Get route for Add Book page --> Create */
-router.get('/add', musicController.Addmusic); 
-/* Post route for Add Book page --> Create */
-router.post('/add', musicController.Processmusic);
-/* Get route for displaying the Edit Book page --> Update */
-router.get('/edit/:id', musicController.Editmusic);
-/* Post route for processing the Edit Book page --> Update */
-router.post('/edit/:id', musicController.ProcessEditmusic);
+/* Get route for Add Song page --> Create */
+router.get('/add', requireAuth, musicController.Addmusic); 
+/* Post route for Add Song page --> Create */
+router.post('/add', requireAuth, musicController.Processmusic);
+/* Get route for displaying the Edit Song page --> Update */
+router.get('/edit/:id', requireAuth, musicController.Editmusic);
+/* Post route for processing the Edit Song page --> Update */
+router.post('/edit/:id', requireAuth, musicController.ProcessEditmusic);
 /* Get to perform Delete Operation --> Delete Operation */
-router.get('/delete/:id', musicController.Deletemusic);
+router.get('/delete/:id', requireAuth, musicController.Deletemusic);
  module.exports = router;

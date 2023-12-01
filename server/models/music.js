@@ -6,7 +6,8 @@ let musicmodel = mongoose.Schema({
     artist: String,
     album: String,
     year: Number,
-    length: String
+    length: String,
+    user: String,
 },
     {
         collection:"songs"

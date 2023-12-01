@@ -9,7 +9,8 @@ module.exports.DisplayMusiclist = async (req,res,next)=>{
        const MusicList = await Music.find(); 
        res.render('music/list', {
           title: 'Music List', 
-          MusicList: MusicList
+          MusicList: MusicList,
+          displayName: req.user ? req.user.displayName:''
        });
     }catch(err){
        console.error(err);
@@ -24,7 +25,8 @@ module.exports.DisplayMusiclist = async (req,res,next)=>{
     try{
         res.render('music/add',
         {
-            title:'Add new entry'
+            title:'Add new entry',
+            displayName: req.user ? req.user.displayName:''
         })
     }
     catch(err)
@@ -43,7 +45,8 @@ module.exports.Processmusic = async (req,res,next)=>{
         "artist": req.body.artist,
         "album": req.body.album,
         "year": req.body.year,
-        "length": req.body.length
+        "length": req.body.length,
+        "user": req.user.displayName
     });
     Music.create(newMusic)
         .then(() => {
@@ -66,8 +69,9 @@ module.exports.Editmusic = async (req,res,next)=>{
     const musicToEdit = await Music.findById(id);
     res.render('music/edit',
     {
-        title:'Edit an existing',
-        Music:musicToEdit
+        title:'Edit an existing song',
+        Music:musicToEdit,
+        displayName: req.user ? req.user.displayName:''
     })
 }
 catch(error){

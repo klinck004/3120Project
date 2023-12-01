@@ -1,0 +1,43 @@
+
+<header class="bg-body-tertiary">
+  <% if (process.env.NODE_ENV === 'development') { %>
+    <%- include('dev.ejs') %>
+  <% } %>
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-xs bg-body-tertiary">
+    <div class="container"> <!--Logo, Page Links-->
+      <a class="navbar-brand" href="/"><i class="fa-solid fa-music"></i> Music Tracker</a>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/music">Music</a>
+          </li>
+        </ul>
+      </div>
+      <div class="login"> <!--Login/Display User/Logout-->
+        <ul class="navbar-nav">
+          <% if(typeof displayName == 'string' && displayName) { %>
+            <li class="navbar-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                <i class="fas fa-lg fa-user"></i> <%= displayName %>
+              </a>
+               <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/logout"><i class="fa-solid fa-sign-out-alt"></i> Logout</a></li> 
+               </ul>
+            </li>
+            <% } else { %>
+              <li class="nav-item">
+                <a href="/login" class="nav-link">
+                <i class="fa-solid fa-sign-in-alt"></i> Login</a>
+            </li>
+            <li class="nav-item"></li>
+            <% } %>
+          </ul>
+
+      </div>
+    </div>
+  </nav>
+</header>
