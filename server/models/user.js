@@ -32,6 +32,12 @@ let User = mongoose.Schema({
     {
         type: Date,
         default: Date.now,
+    },
+    userType:
+    {
+        type: String,
+        default:"user",
+        trim:true,
     }
 },
 {

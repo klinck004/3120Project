@@ -13,6 +13,7 @@ function requireAuth(req, res, next) {
 
 // Read Operation
 router.get('/', musicController.DisplayMusiclist);
+router.get('/spotify', musicController.spotifyTest);
 /* Get route for Add Song page --> Create */
 router.get('/add', requireAuth, musicController.Addmusic); 
 /* Post route for Add Song page --> Create */

@@ -50,11 +50,16 @@
         -->
     
     <div class="container">
-      <% if (message.length > 0) { %>
-        <div class="alert alert-danger fade show active">
-          <%= message %>
+      <% if (devMessage.length > 0) { %>
+        <div class="alert alert-warning fade show active">
+          <%= devMessage %>
         </div>
-        <% } %>     
+        <% } %>
+      <% if (message.length > 0) { %>
+      <div id="alert1" class="alert alert-danger text-center">
+        <p><i class="fa-solid fa-triangle-exclamation"></i> <%= message %></p>
+      </div>
+      <% } %>   
     </div>
     <section class="position-relative py-4 py-xl-5">
       <div class="container">
