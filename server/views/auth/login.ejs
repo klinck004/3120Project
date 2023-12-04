@@ -14,52 +14,17 @@
 <body>
   <!--Header--><%- include('../partials/header.ejs') %>
   <main>
-    <!--
-    <div class="row">
-      <div class="offset-md-4 col-md-4">
-        <% if (message.length > 0) { %>
-        <div class="alert alert-danger">
-          <%= message %>
-        </div>
-        <% } %>
-        <% if (devMessage.length > 0) { %>
-          <div class="alert alert-warning">
-            <%= devMessage %>
-          </div>
-          <% } %>
-        <h1>Login</h1>
-        <form method="post" autocomplete="off">
-          <fieldset class="form-group">
-            <input type="text" class="form-control" name="username" placeholder="Username" id="username" required autofocus>
-          </fieldset>
-          <fieldset class="form-group mt-1">
-            <input type="password" class="form-control" name="password" placeholder="Password" id="password" required autofocus>
-          </fieldset>
-          <fieldset class="form-group text-right mt-1 me-auto">
-            <span>
-              <input type="submit" class="btn btn-success m-1" value="Login">
-              <a href="/"><input type="button" class="btn btn-warning m-1" value="Cancel"></a>
-            </span>
-            <span>
-              <a href="/register" class="btn btn-primary m-1">Register</a>
-            </span>
-          </fieldset>
-        </form>
-      </div>
-    </div>
-        -->
-    
     <div class="container">
       <% if (devMessage.length > 0) { %>
-        <div class="alert alert-warning fade show active">
-          <%= devMessage %>
-        </div>
-        <% } %>
+      <div class="alert alert-warning fade show active">
+        <%= devMessage %>
+      </div>
+      <% } %>
       <% if (message.length > 0) { %>
       <div id="alert1" class="alert alert-danger text-center">
         <p><i class="fa-solid fa-triangle-exclamation"></i> <%= message %></p>
       </div>
-      <% } %>   
+      <% } %>
     </div>
     <section class="position-relative py-4 py-xl-5">
       <div class="container">
@@ -87,8 +52,7 @@
       </div>
     </section>
   </main>
+  <!--Footer--><%- include('../partials/footer.ejs') %>
 </body>
-
-
 
 </html>

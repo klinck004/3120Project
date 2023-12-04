@@ -14,45 +14,46 @@
 
 <body>
   <!--Header--><%- include('../partials/header.ejs') %>
-  <main class="container">
-    <div class="row">
-      <div class="offset-md-4 col-md-4">
-        <!-- User and development error messages-->
-        <% if (devMessage.length > 0) { %>
-          <div class="alert alert-warning fade show active">
-            <%= devMessage %>
-          </div>
-          <% } %>
-        <% if (message.length > 0) { %>
-        <div id="alert1" class="alert alert-danger text-center">
-          <p><i class="fa-solid fa-triangle-exclamation"></i> <%= message %></p>
+  <main>
+    <div class="container">
+      <% if (devMessage.length > 0) { %>
+        <div class="alert alert-warning fade show active">
+          <%= devMessage %>
         </div>
         <% } %>
-        <h1>Register</h1>
-        <form method="post" autocomplete="off">
-          <fieldset class="form-group">
-            <input type="text" class="form-control" name="username" placeholder="Enter username" id="username" required autofocus>
-          </fieldset>
-          <fieldset class="form-group mt-1">
-            <input type="password" class="form-control" name="password" placeholder="Enter password" id="password" required>
-          </fieldset>
-          <fieldset class="form-group mt-1">
-            <input type="email" class="form-control" name="email" placeholder="Enter your email address" id="email" required>
-          </fieldset>
-          <fieldset class="form-group mt-1">
-            <input type="text" class="form-control" name="displayName" placeholder="Enter the display name you wish to use" id="displayName" required>
-          </fieldset>
-          <fieldset class="form-group text-right mt-2">
-            <input type="submit" class="btn btn-success" value="Register">
-            <a href="/">
-              <input type="button" class="btn btn-warning" value="Cancel">
-            </a>
-          </fieldset>
-        </form>
+      <% if (message.length > 0) { %>
+      <div id="alert1" class="alert alert-danger text-center">
+        <p><i class="fa-solid fa-triangle-exclamation"></i> <%= message %></p>
       </div>
+      <% } %>   
     </div>
-    <!--Footer--><%- include('../partials/footer.ejs') %>
+    <section class="position-relative py-4 py-xl-5">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-8 col-xl-6 text-center mx-auto">
+            <h2>Register</h2>
+          </div>
+        </div>
+  
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-6 col-xl-4">
+            <div class="card mb-5">
+              <div class="card-body d-flex flex-column align-items-center">
+                <form class="text-center" method="post" autocomplete="off">
+                  <div class="mb-3"><input type="text" class="form-control" name="username" placeholder="Username" id="username" required autofocus></div>
+                  <div class="mb-3"><input type="password" class="form-control" name="password" placeholder="Password" id="password" required autofocus></div>
+                  <div class="mb-3"><input type="email" class="form-control" name="email" placeholder="Email address" id="email" required></div>
+                  <div class="mb-3"><input type="text" class="form-control" name="displayName" placeholder="Display name" id="displayName" required></div>
+                  <div class="mb-3"><button class="btn btn-success d-block w-100" type="submit">Register</button></div><a href="/" class="btn btn-warning" type="button">Cancel</a><button class="btn btn-link" type="button">Experiencing issues?</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+  <!--Footer--><%- include('../partials/footer.ejs') %>
 </body>
 
 </html>

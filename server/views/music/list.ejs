@@ -37,7 +37,7 @@
             <td class="text-center col-1"><%= MusicList[count].year %></td>
             <td class="text-center col-2"><%= MusicList[count].length %></td>
             <td class="text-center col-1"><%= MusicList[count].user %></td>
-            <td class="text-center col-2"><a href="/music/edit/<%= MusicList[count]._id %>" class="btn btn-warning btn-sm"> Edit </a></td>
+            <td class="text-center col-1"><a href="/music/edit/<%= MusicList[count]._id %>" class="btn btn-warning btn-sm"> Edit </a></td>
             <td class="text-center col-1"><a href="/music/delete/<%= MusicList[count]._id %>" class="btn btn-warning btn-sm"> Delete </a></td>
           </tr>
           <% } %>
