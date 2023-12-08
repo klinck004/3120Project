@@ -31,7 +31,7 @@ let DB = require('./db'); // For MongoDB connection
 let mongoose = require('mongoose');
 let mongoDB = mongoose.connection;
 
-mongoose.connect(DB.URI).catch(error => console.log("MongoDB connection error: " + error));
+mongoose.connect(process.env.URI).catch(error => console.log("MongoDB connection error: " + error));
 mongoDB.once('open',()=>{console.log("MongoDB is connected")});
 
 // Express //
